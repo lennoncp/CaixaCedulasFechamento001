@@ -22,7 +22,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <graphic>
-                  <FontAwesomeIconView glyphName="PLUS" size="20" />
+                  <FontAwesomeIconView fill="#e74c3c" glyphName="PLUS" size="20" />
                </graphic>
             </Button>
             <Button fx:id="btnPDF" mnemonicParsing="false" onAction="#gerarPDF" prefHeight="35.0" prefWidth="35.0" style="-fx-border-color: f72014; -fx-border-radius: 7; -fx-background-color: #ff8f33; -fx-background-radius: 7;">
@@ -30,7 +30,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <graphic>
-                  <FontAwesomeIconView glyphName="FILE_PDF_ALT" size="20" />
+                  <FontAwesomeIconView fill="#e74c3c" glyphName="FILE_PDF_ALT" size="20" />
                </graphic>
             </Button>
             <Button fx:id="btnFechar" alignment="CENTER" mnemonicParsing="false" onAction="#fechar" prefHeight="35.0" prefWidth="35.0" style="-fx-border-color: f72014; -fx-border-radius: 7; -fx-background-color: #ff8f33; -fx-background-radius: 7;">
@@ -41,7 +41,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <graphic>
-                  <FontAwesomeIconView glyphName="CLOSE" size="20" />
+                  <FontAwesomeIconView fill="#e74c3c" glyphName="CLOSE" size="20" />
                </graphic>
             </Button>
          </children>
@@ -54,12 +54,15 @@
             <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
          </VBox.margin>
          <children>
-            <ScrollPane prefWidth="403.0" style="-fx-background-color: #ff8f33;">
+            <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="506.0" prefWidth="400.0" style="-fx-background-color: #ff8f33;">
                <HBox.margin>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                </HBox.margin>
                <content>
-                  <VBox fx:id="vbCedulas" prefHeight="500.0" prefWidth="390.0" style="-fx-background-color: #ff8f33;" />
+                  <VBox fx:id="vbCedulas" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="505.0" prefWidth="390.0" spacing="3.0" style="-fx-background-color: #ff8f33;">
+                     <padding>
+                        <Insets bottom="3.0" />
+                     </padding></VBox>
                </content>
             </ScrollPane>
          </children>
@@ -78,7 +81,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total: " GridPane.halignment="RIGHT">
+                  <Text fill="#e74c3c" strokeType="OUTSIDE" strokeWidth="0.0" text="Total: " GridPane.halignment="RIGHT">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

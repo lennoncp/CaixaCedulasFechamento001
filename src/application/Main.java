@@ -17,7 +17,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			VBox root = (VBox)FXMLLoader.load(getClass().getResource("Sample.fxml"));
+			VBox root = (VBox)FXMLLoader.load(getClass().getResource("Sample.fxml")); 
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			scene.setFill(Color.TRANSPARENT);
