@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" style="-fx-background-color: #ff8f33; -fx-background-radius: 7; -fx-border-color: #f72014; -fx-border-radius: 7;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ValorController">
+   <children>
+      <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" VBox.vgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints fillWidth="false" />
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints fillHeight="false" valignment="CENTER" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="txfValor" alignment="CENTER" prefHeight="35.0" promptText="Valor" style="-fx-border-color: #f72014; -fx-border-radius: 7; -fx-background-radius: 7;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></TextField>
+            <Button fx:id="btnSalve" mnemonicParsing="false" onAction="#salvar" prefHeight="35.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <graphic>
+                  <FontAwesomeIconView glyphName="SAVE" size="22" />
+               </graphic>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
+   <padding>
+      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+   </padding>
+</VBox>

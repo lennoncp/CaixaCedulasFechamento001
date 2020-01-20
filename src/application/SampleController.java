@@ -33,6 +33,7 @@ public class SampleController implements Initializable {
     void gerarPDF() {
     	//TODO GERAR UM PDF
     	System.out.println("Gerar PDF");
+    	PDF.criarPDF();
     }
 
     @FXML
@@ -101,17 +102,29 @@ public class SampleController implements Initializable {
 	
 	private void adicionarAViewCedulas() {
 		
+		int index = 0;
 		for(Cedula c : SL.cedulas) {
-			iniciarCedula(c);
+			iniciarCedula(c,index);
+			index++;
 		}
 		
 	}
 
-	private void iniciarCedula(Cedula cedula) {
+	private void iniciarCedula(Cedula cedula, int index) {
 		SL.cedula = cedula;
 		try {
 			VBox root = (VBox)FXMLLoader.load(getClass().getResource("Cedula.fxml"));
 			vbCedulas.getChildren().add(root);
+			
+			root.setOnMouseClicked((click)->{
+				try {
+					VBox root2 = (VBox)FXMLLoader.load(getClass().getResource("Valor.fxml"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				//System.out.println(SL.cedulas.get(index).getCedula());
+			});
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

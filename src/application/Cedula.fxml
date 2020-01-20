@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -21,10 +22,13 @@
           <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="33.0" />
         </rowConstraints>
          <children>
-            <TextField fx:id="txfQuantidade" alignment="CENTER" style="-fx-border-color: #f72014; -fx-border-radius: 7; -fx-background-radius: 7;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <TextField fx:id="txfQuantidade" alignment="CENTER" disable="true" editable="false" style="-fx-border-color: #f72014; -fx-border-radius: 7; -fx-background-radius: 7;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font name="System Bold" size="18.0" />
-               </font></TextField>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></TextField>
             <Text fx:id="textNomeCedula" fill="#f72014" strokeType="OUTSIDE" strokeWidth="0.0" text="R$ 100.00" GridPane.halignment="CENTER">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -44,4 +48,7 @@
    <padding>
       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
    </padding>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
 </VBox>
