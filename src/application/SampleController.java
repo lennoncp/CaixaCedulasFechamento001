@@ -7,8 +7,13 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class SampleController implements Initializable {
 
@@ -50,19 +55,20 @@ public class SampleController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		SL.tela = vbCedulas;
 		iniciarCedulas();
 		adicionarAViewCedulas();
 	}
 	
 	private void iniciarCedulas() {
 		
-		Cedula caixa = new Cedula(SL.cedulas.size() + 1, "CAIXA", 100D, 0, 0D);
+		Cedula caixa = new Cedula(SL.cedulas.size() + 20, "CAIXA", 0D, 0, 250D);
 		SL.cedulas.add(caixa);
 		
-		Cedula lateral = new Cedula(SL.cedulas.size() + 1, "LATERAL", 100D, 0, 0D);
+		Cedula lateral = new Cedula(SL.cedulas.size() + 20, "LATERAL", 0D, 0, 0D);
 		SL.cedulas.add(lateral);
 		
-		Cedula cem = new Cedula(SL.cedulas.size() + 1, "R$ 100,00", 100D, 0, 0D);
+		Cedula cem = new Cedula(SL.cedulas.size() + 1, "R$ 100,00", 100D, 100, 0D);
 		SL.cedulas.add(cem);
 		
 		Cedula cinquenta = new Cedula(SL.cedulas.size() + 1, "R$ 50,00", 50D, 0, 0D);
@@ -112,13 +118,24 @@ public class SampleController implements Initializable {
 
 	private void iniciarCedula(Cedula cedula, int index) {
 		SL.cedula = cedula;
+		int indexAtual = index;
 		try {
 			VBox root = (VBox)FXMLLoader.load(getClass().getResource("Cedula.fxml"));
 			vbCedulas.getChildren().add(root);
 			
 			root.setOnMouseClicked((click)->{
+				SL.index = indexAtual;
+				Stage primaryStage = new Stage();
 				try {
 					VBox root2 = (VBox)FXMLLoader.load(getClass().getResource("Valor.fxml"));
+					Scene scene = new Scene(root2);
+					scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+					scene.setFill(Color.TRANSPARENT);
+					primaryStage.initStyle(StageStyle.TRANSPARENT);
+					primaryStage.initOwner((Stage) btnADD.getScene().getWindow());
+					primaryStage.initModality(Modality.APPLICATION_MODAL);
+					primaryStage.setScene(scene);
+					primaryStage.show();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
