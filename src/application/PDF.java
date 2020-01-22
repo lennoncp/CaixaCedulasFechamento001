@@ -16,6 +16,8 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
+import com.itextpdf.layout.renderer.IRenderer;
+import com.sun.javafx.geom.Rectangle;
 
 public class PDF {
 	
@@ -60,6 +62,21 @@ public class PDF {
 		            }
 		        }*/
 		        
+		        cell = new Cell();
+                //cell.setBorder(Border.NO_BORDER);
+                cell.add(new Paragraph("CEDULA").setTextAlignment(TextAlignment.CENTER));
+                table.addCell(cell);
+                
+                cell = new Cell();
+                //cell.setBorder(Border.NO_BORDER);
+                cell.add(new Paragraph("QUANTIDADE").setTextAlignment(TextAlignment.CENTER));
+                table.addCell(cell);
+                
+                cell = new Cell();
+                //cell.setBorder(Border.NO_BORDER);
+                cell.add(new Paragraph("VALOR").setTextAlignment(TextAlignment.CENTER));
+                table.addCell(cell);
+		        
 		        int i = 0;
 		        for(Cedula c: SL.cedulas) {
 		        	
@@ -68,21 +85,21 @@ public class PDF {
 						case 0:
 							cell = new Cell();
 			                cell.setBorder(Border.NO_BORDER);
-			                cell.add(new Paragraph(c.getCedula()));
+			                cell.add(new Paragraph(c.getCedula()).setTextAlignment(TextAlignment.CENTER));
 			                table.addCell(cell);
 			                i = 1;
 							break;
 						case 1:
 							cell = new Cell();
 			                cell.setBorder(Border.NO_BORDER);
-			                cell.add(new Paragraph(c.getQuantidade()+""));
+			                cell.add(new Paragraph(c.getQuantidade()+"").setTextAlignment(TextAlignment.CENTER));
 			                table.addCell(cell);
 			                i = 2;
 							break;
 						case 2:
 							cell = new Cell();
 			                cell.setBorder(Border.NO_BORDER);
-			                cell.add(new Paragraph(c.getValorTotal()+""));
+			                cell.add(new Paragraph("R$ "+c.getValorTotal()+"").setTextAlignment(TextAlignment.CENTER));
 			                table.addCell(cell);
 			                i = 0;
 							break;
@@ -91,10 +108,23 @@ public class PDF {
 							break;
 						}
 		        	}
-		        	
-		        	
-		        	
+		        		
 		        }
+		        
+		        cell = new Cell();
+                cell.setBorder(Border.NO_BORDER);
+                cell.add(new Paragraph(" ").setTextAlignment(TextAlignment.CENTER));
+                table.addCell(cell);
+                
+                cell = new Cell();
+                //cell.setBorder(Border.NO_BORDER);
+                cell.add(new Paragraph("VALOR TOTAL: ").setTextAlignment(TextAlignment.CENTER));
+                table.addCell(cell);
+  
+                cell = new Cell();
+                //cell.setBorder(Border.NO_BORDER);
+                cell.add(new Paragraph(SL.valorTotal.getText()).setTextAlignment(TextAlignment.CENTER));
+                table.addCell(cell);
 		        
 		        doc.add(table);
 		 

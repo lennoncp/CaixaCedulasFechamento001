@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -21,6 +22,7 @@ public class SL {
 	public static ObservableList<Cedula> cedulas = FXCollections.observableArrayList();
 	
 	public static VBox tela = new VBox();
+	public static Text valorTotal = new Text();
 	
 	
     public static void adicionarAViewCedulas() {
@@ -30,7 +32,7 @@ public class SL {
 			iniciarCedula(c,index);
 			index++;
 		}
-		
+		atualizarValorTotal();
 	}
 
 	public static void iniciarCedula(Cedula cedula, int index) {
@@ -64,6 +66,14 @@ public class SL {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+	}
+	
+	private static void atualizarValorTotal() {
+		double valorTotal = 0D;
+		for(Cedula c: cedulas) {
+			valorTotal += c.getValorTotal();
+		}
+		SL.valorTotal.setText("R$ "+valorTotal+"");
 	}
 
 }

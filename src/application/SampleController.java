@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -28,6 +29,9 @@ public class SampleController implements Initializable {
 
     @FXML
     private VBox vbCedulas;
+    
+    @FXML
+    private Text txtValotTotal;
 
     @FXML
     void fechar() {
@@ -56,19 +60,20 @@ public class SampleController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		SL.tela = vbCedulas;
+		SL.valorTotal = txtValotTotal;
 		iniciarCedulas();
 		adicionarAViewCedulas();
 	}
 	
 	private void iniciarCedulas() {
 		
-		Cedula caixa = new Cedula(SL.cedulas.size() + 20, "CAIXA", 0D, 0, 250D);
+		Cedula caixa = new Cedula(SL.cedulas.size() + 20, "CAIXA", 0D, 0, 0D);
 		SL.cedulas.add(caixa);
 		
 		Cedula lateral = new Cedula(SL.cedulas.size() + 20, "LATERAL", 0D, 0, 0D);
 		SL.cedulas.add(lateral);
 		
-		Cedula cem = new Cedula(SL.cedulas.size() + 1, "R$ 100,00", 100D, 100, 0D);
+		Cedula cem = new Cedula(SL.cedulas.size() + 1, "R$ 100,00", 100D, 0, 0D);
 		SL.cedulas.add(cem);
 		
 		Cedula cinquenta = new Cedula(SL.cedulas.size() + 1, "R$ 50,00", 50D, 0, 0D);

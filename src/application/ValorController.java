@@ -22,8 +22,10 @@ public class ValorController implements Initializable{
 
     	if(SL.cedulas.get(SL.index).getCodigo() >= 20) {
     		SL.cedulas.get(SL.index).setValorTotal(Double.valueOf(txfValor.getText()));
+    		SL.cedulas.get(SL.index).setQuantidade(1);
     	}else {
     		SL.cedulas.get(SL.index).setQuantidade(Integer.valueOf(txfValor.getText()));
+    		SL.cedulas.get(SL.index).setValorTotal(SL.cedulas.get(SL.index).getValor() * Integer.valueOf(txfValor.getText()));
     	}
     	
     	Stage stage = (Stage) btnSalve.getScene().getWindow();

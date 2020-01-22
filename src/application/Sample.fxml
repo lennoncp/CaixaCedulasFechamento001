@@ -86,7 +86,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Text>
-                  <Text fill="#f72014" strokeType="OUTSIDE" strokeWidth="0.0" text="R$ 0,00" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                  <Text fx:id="txtValotTotal" fill="#f72014" strokeType="OUTSIDE" strokeWidth="0.0" text="R$ 0,00" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
