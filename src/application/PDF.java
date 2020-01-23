@@ -6,10 +6,13 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
 
+import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
+import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
@@ -30,20 +33,38 @@ public class PDF {
 			
 			  Document doc = new Document(pdfDoc);
 			  
-			  Table tableCab = new Table(UnitValue.createPercentArray(2)).useAllAvailableWidth();
+			  Table tableCab = new Table(UnitValue.createPercentArray(3)).useAllAvailableWidth();
 			  
-			  Cell cColuna = new Cell();
-			  cColuna.setBorder(Border.NO_BORDER);
-			  cColuna.add(new Paragraph("Colunas").setTextAlignment(TextAlignment.LEFT));
-			  tableCab.addCell(cColuna);
+			  Cell celCap;
+			  Paragraph pargCap;
 			  
-			  DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-			  Date date = new Date();
-			    
-			  Cell chora = new Cell();
-			  chora.setBorder(Border.NO_BORDER);
-			  chora.add(new Paragraph(dateFormat.format(date)).setTextAlignment(TextAlignment.RIGHT));
-			  tableCab.addCell(chora);
+			  celCap = new Cell();
+			  celCap.setBorder(Border.NO_BORDER);
+			  pargCap = new Paragraph("COLUNAS HOME CENTER").setTextAlignment(TextAlignment.LEFT);
+			  pargCap.setBold();
+			  pargCap.setFontColor(ColorConstants.ORANGE);
+			  celCap.add(pargCap);
+			  tableCab.addCell(celCap);
+			  
+			  celCap = new Cell();
+			  celCap.setBorder(Border.NO_BORDER);
+			  pargCap = new Paragraph("FECHAMENTO DE CAIXA").setTextAlignment(TextAlignment.CENTER);
+			  pargCap.setBold();
+			  celCap.add(pargCap);
+			  tableCab.addCell(celCap);
+			  
+			  celCap = new Cell();
+			  celCap.setBorder(Border.NO_BORDER);
+			  
+			  SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			  Date dAtual = new Date(System.currentTimeMillis());
+			  
+			  pargCap = new Paragraph(sdf.format(dAtual)).setTextAlignment(TextAlignment.RIGHT);
+			  pargCap.setBold();
+			  celCap.add(pargCap);
+			  tableCab.addCell(celCap);
+			  
+			 
 			  
 			  doc.add(tableCab);
 				 
@@ -85,6 +106,7 @@ public class PDF {
 						case 0:
 							cell = new Cell();
 			                cell.setBorder(Border.NO_BORDER);
+			                cell.setBorderLeft(new SolidBorder(1));
 			                cell.add(new Paragraph(c.getCedula()).setTextAlignment(TextAlignment.CENTER));
 			                table.addCell(cell);
 			                i = 1;
@@ -92,6 +114,7 @@ public class PDF {
 						case 1:
 							cell = new Cell();
 			                cell.setBorder(Border.NO_BORDER);
+			                //cell.setBorderLeft(new SolidBorder(1));
 			                cell.add(new Paragraph(c.getQuantidade()+"").setTextAlignment(TextAlignment.CENTER));
 			                table.addCell(cell);
 			                i = 2;
@@ -99,6 +122,7 @@ public class PDF {
 						case 2:
 							cell = new Cell();
 			                cell.setBorder(Border.NO_BORDER);
+			                cell.setBorderRight(new SolidBorder(1));
 			                cell.add(new Paragraph("R$ "+c.getValorTotal()+"").setTextAlignment(TextAlignment.CENTER));
 			                table.addCell(cell);
 			                i = 0;
@@ -111,19 +135,29 @@ public class PDF {
 		        		
 		        }
 		        
+		        Paragraph pTotal;
+		        
 		        cell = new Cell();
                 cell.setBorder(Border.NO_BORDER);
+                cell.setBorderLeft(new SolidBorder(1));
+                cell.setBorderBottom(new SolidBorder(1));
+                cell.setBorderTop(new SolidBorder(1));
                 cell.add(new Paragraph(" ").setTextAlignment(TextAlignment.CENTER));
                 table.addCell(cell);
                 
                 cell = new Cell();
-                //cell.setBorder(Border.NO_BORDER);
+                cell.setBorder(Border.NO_BORDER);
+                cell.setBorderBottom(new SolidBorder(1));
+                cell.setBorderTop(new SolidBorder(1));
                 cell.add(new Paragraph("VALOR TOTAL: ").setTextAlignment(TextAlignment.CENTER));
                 table.addCell(cell);
   
                 cell = new Cell();
                 //cell.setBorder(Border.NO_BORDER);
-                cell.add(new Paragraph(SL.valorTotal.getText()).setTextAlignment(TextAlignment.CENTER));
+                pTotal = new Paragraph(SL.valorTotal.getText()).setTextAlignment(TextAlignment.CENTER);
+                pTotal.setBold();
+                pTotal.setFontColor(ColorConstants.RED);
+                cell.add(pTotal);
                 table.addCell(cell);
 		        
 		        doc.add(table);
